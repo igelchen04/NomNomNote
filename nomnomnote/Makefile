@@ -27,16 +27,16 @@ install:
 	npm install
 
 up:
-	docker-compose up -d
+	docker compose up -d
 
 down:
-	docker-compose down
+	docker compose down
 
 rebuild:
 	docker compose up -d --build
 
 artisan:
-	docker-compose exec $(APP_CONTAINER) php artisan $(filter-out $@,$(MAKECMDGOALS))
+	docker compose exec app php artisan $(filter-out $@,$(MAKECMDGOALS))
 
 migrate:
 	make artisan migrate
@@ -48,10 +48,10 @@ fresh:
 	make artisan migrate:fresh --seed
 
 test:
-	docker-compose exec $(APP_CONTAINER) php artisan test
+	docker compose exec app php artisan test
 
 lint:
-	docker-compose exec $(APP_CONTAINER) ./vendor/bin/pint
+	docker compose exec app ./vendor/bin/pint
 
 bash:
 	docker exec -it $(APP_CONTAINER) bash
