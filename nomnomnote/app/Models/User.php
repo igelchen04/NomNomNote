@@ -51,4 +51,9 @@ class User extends Authenticatable
         return $this->hasMany(Category::class, 'created_by');
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'created_by');
+    }
+
 }
