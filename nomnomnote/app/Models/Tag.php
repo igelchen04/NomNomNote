@@ -6,28 +6,26 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Category extends Model
+class Tag extends Model
 {
-    protected $fillable = [
+  protected $fillable = [
         'name',
-        'image',
-        'description',
         'created_by',
+        'category_id',
     ];
-
+    
     public function creator(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class);
     }
-
-    public function tags()
-    {
-        return $this->hasMany(Tag::class, 'created_by');
-    }
 }
-
