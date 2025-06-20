@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Product extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'name',
         'image',
@@ -38,6 +38,18 @@ class Product extends Model
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    public function addCategory($categoryId)
+    {
+        $this->categories()->attach($categoryId);
+        return $this;
+    }
+
+    public function removeCategory($categoryId)
+    {
+        $this->categories()->detach($categoryId);
+        return $this;
     }
 }
 
