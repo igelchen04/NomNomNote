@@ -51,5 +51,17 @@ class Product extends Model
         $this->categories()->detach($categoryId);
         return $this;
     }
+
+    public function addTag($tagId)
+    {
+        $this->tags()->attach($tagId);
+        return $this;
+    }
+
+    public function removeTag($tagId)
+    {
+        $this->tags()->detach($tagId);
+        return $this;
+    }
 }
 
