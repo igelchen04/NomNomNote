@@ -3,24 +3,24 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
-class ProductFactory extends Factory
+class ReviewFactory extends Factory
 {
 
     public function definition(): array
     {
         return [
-            'name' => ucfirst($this->faker->unique()->words(3, true)),
-            'image' => $this->faker->imageUrl(640, 480, 'products', true),
-            'description' => $this->faker->text(200),
-            'average_price' => $this->faker->randomFloat(2, 5, 1000),
-            'brand' => $this->faker->company,
+            'title' => ucfirst($this->faker->unique()->words(2, true)),
+            'text' => $this->faker->sentence(10),
+            'rating' => $this->faker->randomFloat(1, 0, 5),
             'created_by' => User::inRandomOrder()->first()?->id ?? User::factory(),
+            'product_id' => Product::inRandomOrder()->first()?->id ?? Product::factory(),
         ];
     }
 }
