@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Product extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'name',
         'image',
@@ -29,7 +31,7 @@ class Product extends Model
 
     public function reviews()
     {
-        return $this->hasMany(Product::class, 'product_id');
+        return $this->hasMany(Review::class, 'product_id');
     }
 
     public function tags(): BelongsToMany
