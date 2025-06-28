@@ -11,8 +11,18 @@ export default {
 
     theme: {
         extend: {
+            colors: {
+                nomblue: {
+                    pastel: '#afc1d0',
+                    arzur:'#1c3f60',
+                    dark: '#0b1320',
+                },
+                nomgrey: '#d9d9d9',
+                nomred: '#e46f56',
+            
+            },
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Inter', ...defaultTheme.fontFamily.sans],
             },
         },
     },
