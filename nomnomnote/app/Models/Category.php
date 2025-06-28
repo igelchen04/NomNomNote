@@ -31,5 +31,17 @@ class Category extends Model
     {
         return $this->hasMany(Tag::class, 'created_by');
     }
+
+    public function addProduct($productId)
+    {
+        $this->products()->attach($productId);
+        return $this;
+    }
+
+    public function removeProduct($productId)
+    {
+        $this->products()->detach($productId);
+        return $this;
+    }
 }
 
