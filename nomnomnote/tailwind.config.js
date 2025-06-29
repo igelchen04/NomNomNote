@@ -11,19 +11,23 @@ export default {
 
     theme: {
         extend: {
+            borderRadius: {
+                 '36': '36px',
+                     },
+
             colors: {
                 nomblue: {
                     pastel: '#afc1d0',
-                    arzur:'#1c3f60',
+                    azur:'#1c3f60',
                     dark: '#0b1320',
-                },
+                    },
                 nomgrey: '#d9d9d9',
                 nomred: '#e46f56',
-            
-            },
-            fontFamily: {
-                sans: ['Inter', ...defaultTheme.fontFamily.sans],
-            },
+                 },
+
+             fontFamily: {
+                inter: ['Inter', 'sans-serif'],
+                },
         },
     },
 
